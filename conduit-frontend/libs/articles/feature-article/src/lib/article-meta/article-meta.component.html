@@ -1,5 +1,4 @@
 <div class="article-meta">
-
   <div *ngFor="let author of article.authors" class="btn-space">
     <a [routerLink]="['/profile', author.username]">
       <img [src]="author.image" />
@@ -11,27 +10,27 @@
       <span class="date">{{ article.createdAt | date : 'longDate' }}</span>
     </div>
     <span [hidden]="!(canModify && currentUser.username === author.username)">
-      <a  class="btn btn-sm btn-outline-secondary" [routerLink]="['/editor', article.slug]">
+      <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/editor', article.slug]">
         <i class="ion-edit"></i> Edit Article
       </a>
 
-<!--      <button class="btn btn-sm btn-outline-danger" (click)="deleteArticle()">-->
-<!--        <i class="ion-trash-a"></i> Delete Article-->
-<!--      </button>-->
+      <!--      <button class="btn btn-sm btn-outline-danger" (click)="deleteArticle()">-->
+      <!--        <i class="ion-trash-a"></i> Delete Article-->
+      <!--      </button>-->
     </span>
 
     <span [hidden]="canModify && currentUser.username === author.username">
       <button
         class="btn btn-sm action-btn"
         [ngClass]="{
-          'btn-outline-secondary': !author.following,
-          'btn-secondary': author.following
+          'btn-outline-secondary': !article.author.following,
+          'btn-secondary': article.author.following
         }"
         (click)="toggleFollow(author)"
       >
         <i class="ion-plus-round"></i>
-        &nbsp; {{ author.following ? 'Unfollow' : 'Follow' }}
-        {{ author.username }}
+        &nbsp; {{ article.author.following ? 'Unfollow' : 'Follow' }}
+        {{ article.author.username }}
       </button>
       &nbsp;&nbsp;
       <button

@@ -55,15 +55,11 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
   structure$ = this.store.select(ngrxFormsQuery.selectStructure);
   data$ = this.store.select(ngrxFormsQuery.selectData);
   data: any = {};
-  slug = "";
+  slug = '';
 
-  constructor(private readonly store: Store, private route: ActivatedRoute) {
-
-  }
+  constructor(private readonly store: Store, private route: ActivatedRoute) {}
 
   ngOnInit() {
-
-
     this.store.dispatch(formsActions.setStructure({ structure }));
     this.store
       .select(articleQuery.selectData)

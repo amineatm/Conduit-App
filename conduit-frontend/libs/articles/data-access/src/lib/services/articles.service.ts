@@ -25,8 +25,8 @@ export class ArticlesService {
     return this.apiService.delete<void>(`/articles/${slug}/comments/${commentId}`);
   }
 
-  addComment(slug: string, payload = ''): Observable<SingleCommentResponse> {
-    return this.apiService.post<SingleCommentResponse, { comment: { body: string } }>(`/articles/${slug}/comments`, {
+  addComment(slug: string, payload = ''): Observable<MultipleCommentsResponse> {
+    return this.apiService.post<MultipleCommentsResponse, { comment: { body: string } }>(`/articles/${slug}/comments`, {
       comment: { body: payload },
     });
   }
@@ -44,7 +44,7 @@ export class ArticlesService {
         article: article,
       });
     }
-    return this.apiService.post<ArticleResponse, ArticleResponse>('/articles/', { article: article });
+    return this.apiService.post<ArticleResponse, ArticleResponse>('/articles', { article: article });
   }
 
   // lockArticle(slug: string): Observable<ArticleResponse> {

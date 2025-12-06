@@ -42,7 +42,7 @@ export const articleFeature = createFeature({
   reducer: createReducer(
     articleInitialState,
     on(articleActions.loadArticleSuccess, (state, action) => {
-      let authors: Profile[] = [...action.article.authors, action.article.author];
+      let authors: Profile[] = [ action.article.author];
       return {
         ...state,
         data: { ...action.article, authors },
@@ -57,7 +57,7 @@ export const articleFeature = createFeature({
       loading: false,
     })),
     on(articleActions.addCommentSuccess, (state, action) => {
-      const comments: Comment[] = [action.comment, ...state.comments];
+      const comments: Comment[] = action.comments;
       return { ...state, comments };
     }),
     on(articleActions.deleteCommentSuccess, (state, action) => {

@@ -30,7 +30,6 @@ export const publishArticle$ = createEffect(
   { functional: true },
 );
 
-
 export const loadArticle$ = createEffect(
   (actions$ = inject(Actions), articlesService = inject(ArticlesService)) => {
     return actions$.pipe(
